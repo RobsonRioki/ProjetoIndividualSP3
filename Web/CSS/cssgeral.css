@@ -1,0 +1,36 @@
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+header ul{
+    margin-top: 20px;
+    display: inline-flex;
+}
+
+header a{
+    color: black;
+    text-decoration: none;
+}
+
+
+.headerLi{
+    font-size: larger;
+    margin-left: 100px;
+}
+
+.h3Header{
+    border-radius: 10px;
+    border: 1px solid #FF914D;
+    width: 70px;
+    text-align: center;
+    height: 24px;
+    cursor: pointer;
+    padding: 5px;
+    box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.25);
+}
+
+.h3Header:hover{
+    background-color: #FF914D;
+}
