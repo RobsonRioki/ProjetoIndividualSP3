@@ -5,18 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="stylesheet" href="./CSS/cssgeral.css">
+    <link rel="stylesheet" href="./CSS/cssCadastro.css">
     <link rel="icon" href="/PROJETO INDIVIDUAL/ProjetoIndividualSP3/Documentação/Imagens/Japanfeedlogo.png">
-    <header>
+  </head>
+  <header>
 
-        <a href="./TelaHome.html" class="logobox">
-          <div class="logo">
-          </div>
-        </a>
-        <h3 class="h3Header"><a href="TelaLogin.html">Login</a></h3>
-    </header>
-</head>
+      <a href="./TelaHome.html" class="logobox">
+        <div class="logo">
+        </div>
+      </a>
+      <h3 class="h3Header"><a href="TelaLogin.html">Login</a></h3>
+  </header>
 <body>
-    
+  <div class="caixaCadastro">
+    <h1>Cadastre uma nova conta</h1>
+    <h3>Já possuí uma conta? <a href="TelaLogin.html">Faça o login</a></h3>
+    <BR>
+        <div class="caixaInformacao">
+        <p class="textoCadastro">Informe seu nome</p><input type="text" class="inputsCadastro" id="input_nome">
+        <p class="textoCadastro">Informe seu email</p><input type="text" class="inputsCadastro" id="input_email">
+        <p class="textoCadastro">Digite uma senha</p><input type="text" class="inputsCadastro" id="input_senha">
+        <p class="textoCadastro">Confirme sua senha</p><input type="text" class="inputsCadastro" id="input_senhaConf">
+        <br>
+        <button onclick="cadastrar()" class="botaoCadastro">Cadastrar</button>
+    </div>
+</div>
 </body>
 <footer>
     <div class="tudo">
