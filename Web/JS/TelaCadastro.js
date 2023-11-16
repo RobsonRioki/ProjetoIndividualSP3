@@ -96,10 +96,13 @@ function cadastrar() {
     } else {
         div_especial.innerHTML = '• Não possui caractere especial';
     }
-    if (senha != senhaConfirm){
-        div_senhaConfirm = `As senhas não coincidem`;
+
+    console.log("senha", senha)
+    console.log("senhaConfirm", senhaConfirm)
+    if (senha == senhaConfirm){
+        div_senhaConfirm.innerHTML = ``;
     }else{
-        div_senhaConfirm = ``;
+        div_senhaConfirm.innerHTML = `As senhas não coincidem`;
     }
 }
 
