@@ -9,36 +9,46 @@
     <link rel="icon" href="/PROJETO INDIVIDUAL/ProjetoIndividualSP3/Documentação/Imagens/Japanfeedlogo.png">
   </head>
   <header>
-
-      <a href="./TelaHome.html" class="logobox">
-        <div class="logo">
-        </div>
-      </a>
-      <h3 class="h3Header"><a href="TelaLogin.html">Login</a></h3>
+    
+    <a href="./TelaHome.html" class="logobox">
+      <div class="logo">
+      </div>
+    </a>
+    <h3 class="h3Header"><a href="TelaLogin.html">Login</a></h3>
   </header>
-<body>
+  <body>
   <div class="caixaCadastro">
     <h1>Cadastre uma nova conta</h1>
     <h3>Já possuí uma conta? <a href="TelaLogin.html">Faça o login</a></h3>
     <BR>
-        <div class="caixaInformacao">
-        <p class="textoCadastro">Informe seu nome</p><input type="text" class="inputsCadastro" id="input_nome">
-        <p class="textoCadastro">Informe seu email</p><input type="text" class="inputsCadastro" id="input_email">
-        <p class="textoCadastro">Digite uma senha</p><input type="text" class="inputsCadastro" id="input_senha">
-        <p class="textoCadastro">Confirme sua senha</p><input type="text" class="inputsCadastro" id="input_senhaConf">
+      <div class="caixaInformacao">
+        <p class="textoCadastro">Informe seu nome</p><input type="text" class="inputsCadastro" id="input_nome"><br>
+        <div id="div_nome"></div>
+        <p class="textoCadastro">Informe seu email</p><input type="text" class="inputsCadastro" id="input_email"><br>
+        <div id="div_email"></div>
+        <p class="textoCadastro">Digite uma senha</p><input type="text" class="inputsCadastro" id="input_senha"><br>
+        <div class="mensagem_validacao" id="div_8caracter"></div>
+        <div class="mensagem_validacao" id="div_especial"></div>
+        <div class="mensagem_validacao" id="div_maiuscula"></div>
+        <div class="mensagem_validacao" id="div_minuscula"></div>
+        <div class="mensagem_validacao" id="div_numero"></div>
+      </div>
+      <p class="textoCadastro">Confirme sua senha</p><input type="text" class="inputsCadastro" id="input_senhaConfirm"><br>
+      <div id="div_senhaConfirm"></div>
         <br>
         <button onclick="cadastrar()" class="botaoCadastro">Cadastrar</button>
+      </div>
     </div>
-</div>
-</body>
+  </body>
 <footer>
     <div class="tudo">
       <a href="https://wa.me/+5511986090189/? text=" target="https://wa.me/+5511986090189/? text="> <img class="icone" src="/PROJETO INDIVIDUAL/ProjetoIndividualSP3/Documentação/Imagens/whatsapp.png"
         alt=""></a>
-<a href="https://www.sptech.school" target="https://www.sptech.school"> <img class="icone" src="/PROJETO INDIVIDUAL/ProjetoIndividualSP3/Documentação/Imagens/sptech.png"
-       alt=""></a> 
-<a href="https://github.com/RobsonRioki" target="https://github.com/RobsonRioki"> <img class="icone" src="/PROJETO INDIVIDUAL/ProjetoIndividualSP3/Documentação/Imagens/github.png"   
-        alt=""></a>
+        <a href="https://www.sptech.school" target="https://www.sptech.school"> <img class="icone" src="/PROJETO INDIVIDUAL/ProjetoIndividualSP3/Documentação/Imagens/sptech.png"
+          alt=""></a> 
+          <a href="https://github.com/RobsonRioki" target="https://github.com/RobsonRioki"> <img class="icone" src="/PROJETO INDIVIDUAL/ProjetoIndividualSP3/Documentação/Imagens/github.png"   
+            alt=""></a>
     </div>
-</footer>
-</html>
+  </footer>
+  </html>
+  <script src="./JS/TelaCadastro.js"></script>
