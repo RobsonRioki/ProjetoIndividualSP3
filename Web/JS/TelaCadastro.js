@@ -7,11 +7,16 @@ function cadastrar() {
     var email = input_email.value;
 
 
+    var nomeValidacao = false;
+    var senhaConfirmValidacao = false;
+    var emailValidacao = false;
+
     //validação dos campos nao poderem ser nulos
     if (nome == "") {
         div_nome.innerHTML = "* Esse campo é obrigatório";
     } else {
         div_nome.innerHTML = "";
+        nomeValidacao = true;
     }
 
     // email possuiir @
@@ -19,6 +24,7 @@ function cadastrar() {
         div_email.innerHTML = "* Insira um e-mail válido";
     } else {
         div_email.innerHTML = '';
+        emailValidacao = true;
     }
 
 
@@ -83,7 +89,6 @@ function cadastrar() {
         senha.indexOf("?") > -1 ||
         senha.indexOf("'") > -1 ||
         senha.indexOf(`"`) > -1 ||
-        // senha.indexOf("\")> -1 ||
         senha.indexOf("<") > -1 ||
         senha.indexOf(">") > -1 ||
         senha.indexOf(",") > -1 ||
@@ -97,12 +102,16 @@ function cadastrar() {
         div_especial.innerHTML = '• Não possui caractere especial';
     }
 
-    console.log("senha", senha)
-    console.log("senhaConfirm", senhaConfirm)
     if (senha == senhaConfirm){
         div_senhaConfirm.innerHTML = ``;
+        senhaConfirmValidacao = true;
     }else{
         div_senhaConfirm.innerHTML = `As senhas não coincidem`;
     }
+
+    if (nomeValidacao == true && emailValidacao == true && senhaConfirmValidacao == true){
+        window.location.href = "http://127.0.0.1:5500/PROJETO%20INDIVIDUAL/ProjetoIndividualSP3/Web/TelaLogin.html"
+    }
+
 }
 
