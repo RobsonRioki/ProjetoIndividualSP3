@@ -10,6 +10,7 @@ function cadastrar() {
     var nomeValidacao = false;
     var senhaConfirmValidacao = false;
     var emailValidacao = false;
+    var senhaValidacao = false;
 
     //validação dos campos nao poderem ser nulos
     if (nome == "") {
@@ -29,6 +30,7 @@ function cadastrar() {
 
 
     // senha com 8 dígitos no mínimo
+    
     if (senha.length < 8) {
         div_8caracter.innerHTML = '• Sua senha não possui pelo menos 8 caracteres !';
     } else {
@@ -101,6 +103,52 @@ function cadastrar() {
     } else {
         div_especial.innerHTML = '• Não possui caractere especial';
     }
+if ( senha.length > 8 &&
+(senha.indexOf("0") > 0 ||
+senha.indexOf("1") > 0 ||
+senha.indexOf("2") > 0 ||
+senha.indexOf("3") > 0 ||
+senha.indexOf("4") > 0 ||
+senha.indexOf("5") > 0 ||
+senha.indexOf("6") > 0 ||
+senha.indexOf("7") > 0 ||
+senha.indexOf("8") > 0 ||
+senha.indexOf("9") > 0)&&
+senha.toLowerCase() != senha &&
+senha.toUpperCase() != senha &&
+(senha.indexOf("!") > 0 ||
+        senha.indexOf("@") > 0 ||
+        senha.indexOf("#") > 0 ||
+        senha.indexOf("$") > 0 ||
+        senha.indexOf("%") > 0 ||
+        senha.indexOf("^") > 0 ||
+        senha.indexOf("&") > 0 ||
+        senha.indexOf("(") > 0 ||
+        senha.indexOf(")") > 0 ||
+        senha.indexOf(")") > 0 ||
+        senha.indexOf(")") > 0 ||
+        senha.indexOf("+") > 0 ||
+        senha.indexOf("{") > 0 ||
+        senha.indexOf("}") > 0 ||
+        senha.indexOf("]") > 0 ||
+        senha.indexOf("[") > 0 ||
+        senha.indexOf("|") > 0 ||
+        senha.indexOf(";") > 0 ||
+        senha.indexOf(":") > 0 ||
+        senha.indexOf("?") > 0 ||
+        senha.indexOf("'") > 0 ||
+        senha.indexOf(`"`) > 0 ||
+        senha.indexOf("<") > 0 ||
+        senha.indexOf(">") > 0 ||
+        senha.indexOf(",") > 0 ||
+        senha.indexOf(".") > 0 ||
+        senha.indexOf("~") > 0 ||
+        senha.indexOf("/") > 0 ||
+        senha.indexOf("-") > 0 ||
+        senha.indexOf("_") > 0)
+){
+    senhaValidacao = true;
+}
 
     if (senha == senhaConfirm){
         div_senhaConfirm.innerHTML = ``;
@@ -109,7 +157,8 @@ function cadastrar() {
         div_senhaConfirm.innerHTML = `As senhas não coincidem`;
     }
 
-    if (nomeValidacao == true && emailValidacao == true && senhaConfirmValidacao == true){
+    if (nomeValidacao == true && emailValidacao == true && senhaConfirmValidacao == true && senhaValidacao == true){
+        alert("Cadastro realizado!")
         window.location.href = "http://127.0.0.1:5500/PROJETO%20INDIVIDUAL/ProjetoIndividualSP3/Web/TelaLogin.html"
     }
 
