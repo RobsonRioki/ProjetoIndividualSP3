@@ -7,11 +7,12 @@
 .logo{
     width: 100px;
     height: 100px;
-    background-image: url("/PROJETO INDIVIDUAL/ProjetoIndividualSP3/Documentação/Imagens/Japanfeedlogo.png");
+    background-image: url("../../Documentação/Imagens/Japanfeedlogo.png");
     background-size: contain;
     border-radius: 50%;
     margin: 5px;
 }
+
 .logobox{
 
     position: absolute;
@@ -36,7 +37,6 @@ header a{
     color: black;
     text-decoration: none;
 }
-
 
 .h3Header{
     border-radius: 10px;
@@ -67,7 +67,7 @@ footer{
     align-items: center;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     background-color: #f3f3f3;
-    margin-top: 100%;   
+    margin-top: 20%;   
 }
 
 .tudo{
@@ -80,7 +80,7 @@ footer{
 }
 
 .icone{
-    width: 70;
+    width: 70px;
     height: 70px;
     padding: 10px;
 }

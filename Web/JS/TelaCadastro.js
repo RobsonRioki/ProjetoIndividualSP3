@@ -159,7 +159,7 @@ senha.toUpperCase() != senha &&
 
     if (nomeValidacao == true && emailValidacao == true && senhaConfirmValidacao == true && senhaValidacao == true){
         alert("Cadastro realizado!")
-        window.location.href = "http://127.0.0.1:5500/PROJETO%20INDIVIDUAL/ProjetoIndividualSP3/Web/TelaLogin.html"
+        window.location.href = "http://127.0.0.1:5500/Web/TelaLogin.html"
     }
 
 }
