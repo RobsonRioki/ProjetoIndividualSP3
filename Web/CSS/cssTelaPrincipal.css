@@ -1,14 +1,7 @@
-.montefuji{
-    width: 100%;
-    height: 500px;
 
-}
-
-.divImagemTitulo{
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
+h1, h2{
+    margin-top: 20px;
+    text-align: center;
 }
 .divImagensTextos{
     margin: 50px;
@@ -26,9 +19,4 @@
 .divTextos{
     align-items: center;
     padding: 0 12px;
-}
-
-h1, h2{
-    margin-top: 20px;
-    text-align: center;
 }
