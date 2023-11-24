@@ -88,7 +88,7 @@ footer{
 }
 
 body{
-    background-color: #F6C4A6;
+    background-color: #f6c5a7
 }
 ::-webkit-scrollbar-track {
     background: #D9D9D9; 
@@ -97,6 +97,6 @@ body{
     width: 10px;
   }
   ::-webkit-scrollbar-thumb {
-    background: #F6C4A6; 
+    background: #ecb08a; 
   }
   

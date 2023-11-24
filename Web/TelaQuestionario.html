@@ -21,30 +21,96 @@
       </a>
       <h3 class="h3Header"><a href="TelaLogin.html">Login</a></h3>
     </header>
-    <h1>Quiz</h1>
+    <h1>Questionário</h1>
     <div class="divPergunta">
-      <h3>1. Dos pratos apresentados qual deles te causa mais interesse?</h3>
-      <button class="botaoResposta">Okonomiyaki</button><br>
-      <button class="botaoResposta">Takoyaki</button><br>
-      <button class="botaoResposta">Omuraisu</button><br>
-      <button class="botaoResposta">Karaague</button><br>
-      <button class="botaoResposta">Lámen</button><br>
-      <button class="botaoResposta">Sushi</button><br>
+      <form>
+        <div class="divCentralizarRespostas">
+          <div class="divResposta">
+            <h2>1. Dos pratos apresentados qual deles mais te interessa ?</h2>
+            <input
+              type="radio"
+              id="input_okonomiyaki"
+              name="p1"
+              value="Okonomiyaki"
+            />
+            <label for="input_okonomiyaki">Okonomiyaki</label><br />
+            <input
+              type="radio"
+              id="input_takoyaki"
+              name="p1"
+              value="Takoyaki"
+            />
+            <label for="input_takoyaki">Takoyaki</label><br />
+            <input
+              type="radio"
+              id="input_omuraisu"
+              name="p1"
+              value="Omuraisu"
+            />
+            <label for="input_omuraisu">Omuraisu</label><br />
+            <input
+              type="radio"
+              id="input_karaague"
+              name="p1"
+              value="Karaague"
+            />
+            <label for="input_karaague">Karaague</label><br />
+            <input type="radio" id="input_lamen" name="p1" value="Lamen" />
+            <label for="input_lamen">Lámen</label><br />
+            <input type="radio" id="input_sushi" name="p1" value="Sushi" />
+            <label for="input_sushi">Sushi</label><br />
+          </div>
+        </div>
+        <br />
+
+        <div class="divCentralizarRespostas">
+          <div class="divResposta">
+            <h2>2. Você gosta da culinária japonesa?</h2>
+            <input type="radio" id="input_gosto" name="p2" value="Gosto" />
+            <label for="input_gosto">Gosto</label><br />
+            <input
+              type="radio"
+              id="input_nexp"
+              name="p2"
+              value="Nunca experimentei"
+            />
+            <label for="input_nexp">Nunca experimentei</label><br />
+            <input
+              type="radio"
+              id="input_naogosto"
+              name="p2"
+              value="NãoGosto"
+            />
+            <label for="input_naogosto">Não gosto</label><br />
+            <br />
+          </div>
+        </div>
+        <div class="divCentralizarRespostas">
+          <div class="divResposta">
+            <h2>3. Você comeria comidas cruas?</h2>
+            <input type="radio" id="input_comeria" name="p3" value="Comeria" />
+            <label for="input_comeria">Comeria</label><br />
+            <input
+              type="radio"
+              id="input_exp"
+              name="p3"
+              value="Experimentaria"
+            />
+            <label for="input_exp">Experimentaria</label><br />
+            <input
+              type="radio"
+              id="input_naocomeria"
+              name="p3"
+              value="NãoComeria"
+            />
+            <label for="input_naocomeria">Não comeria</label><br />
+          </div>
+        </div>
+        <button type="submit" class="botaoEnviar" onclick="registrar()">
+          Enviar respostas
+        </button>
+      </form>
     </div>
-    <div class="divPergunta">
-      <div class="divPergunta">
-        <h3>2. Você gosta da culinária japonesa?</h3>
-        <button class="botaoResposta">Gosto</button><br>
-        <button class="botaoResposta">Nunca experimentei</button><br>
-        <button class="botaoResposta">Não gosto</button><br>
-      </div>
-      <div class="divPergunta">
-      <h3>3. Você comeria comidas cruas?</h3>
-      <button class="botaoResposta">Comeria</button><br>
-      <button class="botaoResposta">Experimentaria</button><br>
-      <button class="botaoResposta">Não comeria</button><br>
-    </div>
-    <button class="botaoEnviar">Enviar respostas</button>
     <footer>
       <div class="tudo">
         <a
@@ -70,4 +136,5 @@
     </footer>
   </body>
 </html>
-<script src="./JS/Questionario.js"></script>
+<script src="./JS/TelaQuestionario.js"></script>
+

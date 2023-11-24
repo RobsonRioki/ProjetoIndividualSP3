@@ -42,3 +42,33 @@ a{
 .redirecionador:hover{
     background-color: #FF914D;
 }
+.divAvaliacao{
+    text-align: center;
+    margin-left: auto;
+    max-width: 55%;
+    
+}
+.divAvaliacaoUnica{
+    text-align: left;
+    width: fit-content;
+    display: flex;
+    column-gap: 20px;
+}
+.inputSelecaoAvaliacao{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.botaoAvaliacao{
+    display: flex;
+    justify-content: center;
+    background-color: #FF914D; /* Green */
+    border: none;
+    color: white;
+    padding: 20px 35px;
+    text-decoration: none;
+    font-size: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 30px;
+}
