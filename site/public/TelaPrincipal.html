@@ -272,7 +272,11 @@
             resposta.json().then((json) => {
               console.log(json);
               console.log(JSON.stringify(json));
-              fkAvaliacao = json.idAvaliacao;
+
+              if (fkAvaliacao.length > 0) {
+                alert("Não pode fazer a avaliação 2 vezes");
+                return;
+              }
               // alert(json.idAvaliacao + "asldjnasldnaosndoasijdopasbndpo");
             });
           } else {

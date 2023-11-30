@@ -64,7 +64,7 @@ function autenticar(req, res) {
       if (Resultadoava.length == 1) {
         console.log(Resultadoava);
 
-        if (Resultadoava.length > 0) {
+        if (Resultadoava > 0) {
           res.json({
             idAvaliacao: Resultadoava[0].idAvaliacao,
           });
