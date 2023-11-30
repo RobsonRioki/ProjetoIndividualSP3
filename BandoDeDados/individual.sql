@@ -1,10 +1,10 @@
+drop database JapanFeed;
 CREATE DATABASE JapanFeed;
 USE JapanFeed;
-drop database japanfeed;
 
 CREATE TABLE usuario(
 idUsuario int primary key auto_increment,
-Nome varchar(45),
+nome varchar(45),
 email varchar(70),
 senha varchar(70)
 );
@@ -31,5 +31,10 @@ fkUsuario int,
 foreign key (fkUsuario) references usuario(idUsuario),
 primary key (idAvaliacao, fkUsuario)
 );
+
+SELECT * FROM usuario;
+SELECT * FROM questionario;
+SELECT * FROM avaliacao;
+
 
 

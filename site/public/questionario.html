@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questionário</title>
+    <link rel="stylesheet" href="./CSS/cssgeral.css" />
+    <link rel="stylesheet" href="./CSS/cssQuestionario.css" />
+    <link rel="icon" href="./assets/imgs/Japanfeedlogo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <a href="./index.html" class="logobox">
+        <div class="logo"></div>
+      </a>
+      <h3 class="h3Header"><a href="login.html">Login</a></h3>
+    </header>
+    <h1>Questionário</h1>
+    <div class="divPergunta">
+      <form onsubmit="return false">
+        <div class="divCentralizarRespostas">
+          <div class="divResposta">
+            <h2>1. Dos pratos apresentados qual deles mais te interessa ?</h2>
+            <input
+              type="radio"
+              id="input_okonomiyaki"
+              name="p1"
+              value="Okonomiyaki"
+            />
+            <label for="input_okonomiyaki">Okonomiyaki</label><br />
+            <input
+              type="radio"
+              id="input_takoyaki"
+              name="p1"
+              value="Takoyaki"
+            />
+            <label for="input_takoyaki">Takoyaki</label><br />
+            <input
+              type="radio"
+              id="input_omuraisu"
+              name="p1"
+              value="Omuraisu"
+            />
+            <label for="input_omuraisu">Omuraisu</label><br />
+            <input
+              type="radio"
+              id="input_karaague"
+              name="p1"
+              value="Karaague"
+            />
+            <label for="input_karaague">Karaague</label><br />
+            <input type="radio" id="input_lamen" name="p1" value="Lamen" />
+            <label for="input_lamen">Lámen</label><br />
+            <input type="radio" id="input_sushi" name="p1" value="Sushi" />
+            <label for="input_sushi">Sushi</label><br />
+          </div>
+        </div>
+        <br />
+
+        <div class="divCentralizarRespostas">
+          <div class="divResposta">
+            <h2>2. Você gosta da culinária japonesa?</h2>
+            <input type="radio" id="input_gosto" name="p2" value="Gosto" />
+            <label for="input_gosto">Gosto</label><br />
+            <input
+              type="radio"
+              id="input_nexp"
+              name="p2"
+              value="Nunca experimentei"
+            />
+            <label for="input_nexp">Nunca experimentei</label><br />
+            <input
+              type="radio"
+              id="input_naogosto"
+              name="p2"
+              value="NãoGosto"
+            />
+            <label for="input_naogosto">Não gosto</label><br />
+            <br />
+          </div>
+        </div>
+        <div class="divCentralizarRespostas">
+          <div class="divResposta">
+            <h2>3. Você comeria comidas cruas?</h2>
+            <input type="radio" id="input_comeria" name="p3" value="Comeria" />
+            <label for="input_comeria">Comeria</label><br />
+            <input
+              type="radio"
+              id="input_exp"
+              name="p3"
+              value="Experimentaria"
+            />
+            <label for="input_exp">Experimentaria</label><br />
+            <input
+              type="radio"
+              id="input_naocomeria"
+              name="p3"
+              value="NãoComeria"
+            />
+            <label for="input_naocomeria">Não comeria</label><br />
+          </div>
+        </div>
+        <button type="submit" class="botaoEnviar" onclick="registrar()">
+          Enviar respostas
+        </button>
+      </form>
+    </div>
+    <footer>
+      <div class="tudo">
+        <a
+          href="https://wa.me/+5511986090189/? text="
+          target="https://wa.me/+5511986090189/? text="
+        >
+          <img
+            class="icone"
+            src="./assets/imgs/whatsapp.png"
+            alt=""
+          />
+        </a>
+        <a href="https://www.sptech.school" target="https://www.sptech.school">
+          <img class="icone" src="./assets/imgs/sptech.png" alt="" />
+        </a>
+        <a
+          href="https://github.com/RobsonRioki"
+          target="https://github.com/RobsonRioki"
+        >
+          <img class="icone" src="./assets/imgs/github.png" alt=""
+        /></a>
+      </div>
+    </footer>
+  </body>
+</html>
+<script>
+    function registrar() {
+    var Resposta1 = document.querySelector('input[name="p1"]:checked').value;
+    var Resposta2 = document.querySelector('input[name="p2"]:checked').value;
+    var Resposta3 = document.querySelector('input[name="p3"]:checked').value;
+    
+    
+    alert(Resposta1);
+    alert(Resposta2);
+    alert(Resposta3);
+
+
+
+
+
+
+  }
+</script>

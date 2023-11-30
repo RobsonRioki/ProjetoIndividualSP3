@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="css/cssgeral.css">
+    <link rel="stylesheet" href="css/cssCadastro.css">
+    <link rel="icon" href="assets/imgs/Japanfeedlogo.png">
+    <script src="js/sessao.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+    
+      <a href="./index.html" class="logobox">
+        <div class="logo">
+        </div>
+      </a>
+      <h3 class="h3Header"><a href="login.html">Login</a></h3>
+    </header>
+  <div class="caixaCadastro">
+    <h1>Cadastre uma nova conta</h1>
+    <h3>Já possui uma conta? <a href="login.html">Faça o login</a></h3>
+    <BR>
+      <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+          <span id="mensagem_erro"></span>
+        </div>
+      </div>
+      <div class="caixaInformacao">
+        <p class="textoCadastro">Informe seu nome</p><input type="text" class="inputsCadastro" placeholder="Nome" id="input_nome"><br>
+        <div id="div_nome"></div>
+        <p class="textoCadastro">Informe seu email</p><input type="text" class="inputsCadastro" placeholder="Email" id="input_email"><br>
+        <div id="div_email"></div>
+        <p class="textoCadastro">Digite uma senha</p><input type="password" class="inputsCadastro" placeholder="Senha" id="input_senha"><br>
+        <div class="mensagem_validacao" id="div_8caracter"></div>
+        <div class="mensagem_validacao" id="div_especial"></div>
+        <div class="mensagem_validacao" id="div_maiuscula"></div>
+        <div class="mensagem_validacao" id="div_minuscula"></div>
+        <div class="mensagem_validacao" id="div_numero"></div>
+      </div>
+      <p class="textoCadastro">Confirme sua senha</p><input type="password" class="inputsCadastro" placeholder="Confirmação da senha" id="input_senhaConfirm"><br>
+      <div id="div_senhaConfirm"></div>
+        <br>
+        <button onclick="cadastrar()" class="botaoCadastro">Cadastrar</button>
+      </div>
+    </div>
+    <footer>
+      <div class="tudo">
+        <a href="https://wa.me/+5511986090189/? text=" target="https://wa.me/+5511986090189/? text="> <img class="icone" src="assets/imgs/whatsapp.png"
+          alt=""></a>
+          <a href="https://www.sptech.school" target="https://www.sptech.school"> <img class="icone" src="assets/imgs/sptech.png"
+            alt=""></a> 
+            <a href="https://github.com/RobsonRioki" target="https://github.com/RobsonRioki"> <img class="icone" src="assets/imgs/github.png"   
+              alt=""></a>
+      </div>
+    </footer>
+  </body>
+  </html>
+
+<script>
+
+function cadastrar() {
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = input_nome.value;
+    var senhaVar = input_senha.value;
+    var confirmacaoSenhaVar = input_senhaConfirm.value;
+    var emailVar = input_email.value;
+//validação dos campos nao poderem ser nulos
+var nomeValidacao = false;
+var senhaConfirmValidacao = false;
+var emailValidacao = false;
+var senhaValidacao = false;
+
+if (nomeVar == "") {
+    div_nome.innerHTML = "* Esse campo é obrigatório";
+} else {
+    div_nome.innerHTML = "";
+    nomeValidacao = true;
+}
+
+// email possuiir @
+if (emailVar.indexOf("@") == -1) {
+    div_email.innerHTML = "* Insira um e-mail válido";
+} else {
+    div_email.innerHTML = '';
+    emailValidacao = true;
+}
+
+
+// senha com 8 dígitos no mínimo
+
+if (senhaVar.length < 8) {
+    div_8caracter.innerHTML = '• Sua senha não possui pelo menos 8 caracteres !';
+} else {
+    div_8caracter.innerHTML = '';
+}
+
+// senha possuir pelo menos um numero
+if (senhaVar.indexOf("0") > -1 ||
+    senhaVar.indexOf("1") > -1 ||
+    senhaVar.indexOf("2") > -1 ||
+    senhaVar.indexOf("3") > -1 ||
+    senhaVar.indexOf("4") > -1 ||
+    senhaVar.indexOf("5") > -1 ||
+    senhaVar.indexOf("6") > -1 ||
+    senhaVar.indexOf("7") > -1 ||
+    senhaVar.indexOf("8") > -1 ||
+    senhaVar.indexOf("9") > -1) {
+    div_numero.innerHTML = '';
+} else {
+    div_numero.innerHTML = '• Não possui número';
+}
+
+// senha possuir pelo menos uma letra maiuscula
+if (senhaVar.toLowerCase() == senhaVar) {
+    div_maiuscula.innerHTML = '• Não possui letra maiúscula';
+} else {
+    div_maiuscula.innerHTML = '';
+}
+
+// senha possuir uma letra minuscula
+if (senhaVar.toUpperCase() == senhaVar) {
+    div_minuscula.innerHTML = '• Não possui letra minúscula';
+} else {
+    div_minuscula.innerHTML = '';
+}
+
+// senha possuir um caractere especial
+// caracteres especias validados = !@#$ %^&* ()_ + {}[] |\\: ; \"'<>,.?/~-
+if (senhaVar.indexOf("!") > -1 ||
+    senhaVar.indexOf("@") > -1 ||
+    senhaVar.indexOf("#") > -1 ||
+    senhaVar.indexOf("$") > -1 ||
+    senhaVar.indexOf("%") > -1 ||
+    senhaVar.indexOf("^") > -1 ||
+    senhaVar.indexOf("&") > -1 ||
+    senhaVar.indexOf("(") > -1 ||
+    senhaVar.indexOf(")") > -1 ||
+    senhaVar.indexOf(")") > -1 ||
+    senhaVar.indexOf(")") > -1 ||
+    senhaVar.indexOf("+") > -1 ||
+    senhaVar.indexOf("{") > -1 ||
+    senhaVar.indexOf("}") > -1 ||
+    senhaVar.indexOf("]") > -1 ||
+    senhaVar.indexOf("[") > -1 ||
+    senhaVar.indexOf("|") > -1 ||
+    senhaVar.indexOf(";") > -1 ||
+    senhaVar.indexOf(":") > -1 ||
+    senhaVar.indexOf("?") > -1 ||
+    senhaVar.indexOf("'") > -1 ||
+    senhaVar.indexOf(`"`) > -1 ||
+    senhaVar.indexOf("<") > -1 ||
+    senhaVar.indexOf(">") > -1 ||
+    senhaVar.indexOf(",") > -1 ||
+    senhaVar.indexOf(".") > -1 ||
+    senhaVar.indexOf("~") > -1 ||
+    senhaVar.indexOf("/") > -1 ||
+    senhaVar.indexOf("-") > -1 ||
+    senhaVar.indexOf("_") > -1) {
+    div_especial.innerHTML = ' ';
+} else {
+    div_especial.innerHTML = '• Não possui caractere especial';
+}
+if ( senhaVar.length > 8 &&
+(senhaVar.indexOf("0") > 0 ||
+senhaVar.indexOf("1") > 0 ||
+senhaVar.indexOf("2") > 0 ||
+senhaVar.indexOf("3") > 0 ||
+senhaVar.indexOf("4") > 0 ||
+senhaVar.indexOf("5") > 0 ||
+senhaVar.indexOf("6") > 0 ||
+senhaVar.indexOf("7") > 0 ||
+senhaVar.indexOf("8") > 0 ||
+senhaVar.indexOf("9") > 0)&&
+senhaVar.toLowerCase() != senhaVar &&
+senhaVar.toUpperCase() != senhaVar &&
+(senhaVar.indexOf("!") > 0 ||
+    senhaVar.indexOf("@") > 0 ||
+    senhaVar.indexOf("#") > 0 ||
+    senhaVar.indexOf("$") > 0 ||
+    senhaVar.indexOf("%") > 0 ||
+    senhaVar.indexOf("^") > 0 ||
+    senhaVar.indexOf("&") > 0 ||
+    senhaVar.indexOf("(") > 0 ||
+    senhaVar.indexOf(")") > 0 ||
+    senhaVar.indexOf(")") > 0 ||
+    senhaVar.indexOf(")") > 0 ||
+    senhaVar.indexOf("+") > 0 ||
+    senhaVar.indexOf("{") > 0 ||
+    senhaVar.indexOf("}") > 0 ||
+    senhaVar.indexOf("]") > 0 ||
+    senhaVar.indexOf("[") > 0 ||
+    senhaVar.indexOf("|") > 0 ||
+    senhaVar.indexOf(";") > 0 ||
+    senhaVar.indexOf(":") > 0 ||
+    senhaVar.indexOf("?") > 0 ||
+    senhaVar.indexOf("'") > 0 ||
+    senhaVar.indexOf(`"`) > 0 ||
+    senhaVar.indexOf("<") > 0 ||
+    senhaVar.indexOf(">") > 0 ||
+    senhaVar.indexOf(",") > 0 ||
+    senhaVar.indexOf(".") > 0 ||
+    senhaVar.indexOf("~") > 0 ||
+    senhaVar.indexOf("/") > 0 ||
+    senhaVar.indexOf("-") > 0 ||
+    senhaVar.indexOf("_") > 0)
+){
+senhaValidacao = true;
+}
+
+if (senhaVar == confirmacaoSenhaVar){
+    div_senhaConfirm.innerHTML = ``;
+    senhaConfirmValidacao = true;
+}else{
+    div_senhaConfirm.innerHTML = `As senhas não coincidem`;
+}
+if (nomeValidacao == true && emailValidacao == true && senhaValidacao == true && senhaConfirmValidacao == true){
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == ""
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
+  }
+//   function cadastrar() {
+
+
+// var nomeVar = input_nome.value;
+// var senhaVar = input_senha.value;
+// var confirmacaoSenhaVar = input_senhaConfirm.value;
+// var emailVar = input_email.value;
+
+
+// var nomeValidacao = false;
+// var senhaConfirmValidacao = false;
+// var emailValidacao = false;
+// var senhaValidacao = false;
+
+// //validação dos campos nao poderem ser nulos
+// if (nomeVar == "") {
+//     div_nome.innerHTML = "* Esse campo é obrigatório";
+// } else {
+//     div_nome.innerHTML = "";
+//     nomeValidacao = true;
+// }
+
+// // email possuiir @
+// if (emailVar.indexOf("@") == -1) {
+//     div_email.innerHTML = "* Insira um e-mail válido";
+// } else {
+//     div_email.innerHTML = '';
+//     emailValidacao = true;
+// }
+
+
+// // senha com 8 dígitos no mínimo
+
+// if (senhaVar.length < 8) {
+//     div_8caracter.innerHTML = '• Sua senha não possui pelo menos 8 caracteres !';
+// } else {
+//     div_8caracter.innerHTML = '';
+// }
+
+// // senha possuir pelo menos um numero
+// if (senhaVar.indexOf("0") > -1 ||
+//     senhaVar.indexOf("1") > -1 ||
+//     senhaVar.indexOf("2") > -1 ||
+//     senhaVar.indexOf("3") > -1 ||
+//     senhaVar.indexOf("4") > -1 ||
+//     senhaVar.indexOf("5") > -1 ||
+//     senhaVar.indexOf("6") > -1 ||
+//     senhaVar.indexOf("7") > -1 ||
+//     senhaVar.indexOf("8") > -1 ||
+//     senhaVar.indexOf("9") > -1) {
+//     div_numero.innerHTML = '';
+// } else {
+//     div_numero.innerHTML = '• Não possui número';
+// }
+
+// // senha possuir pelo menos uma letra maiuscula
+// if (senhaVar.toLowerCase() == senhaVar) {
+//     div_maiuscula.innerHTML = '• Não possui letra maiúscula';
+// } else {
+//     div_maiuscula.innerHTML = '';
+// }
+
+// // senha possuir uma letra minuscula
+// if (senhaVar.toUpperCase() == senhaVar) {
+//     div_minuscula.innerHTML = '• Não possui letra minúscula';
+// } else {
+//     div_minuscula.innerHTML = '';
+// }
+
+// // senha possuir um caractere especial
+// // caracteres especias validados = !@#$ %^&* ()_ + {}[] |\\: ; \"'<>,.?/~-
+// if (senhaVar.indexOf("!") > -1 ||
+//     senhaVar.indexOf("@") > -1 ||
+//     senhaVar.indexOf("#") > -1 ||
+//     senhaVar.indexOf("$") > -1 ||
+//     senhaVar.indexOf("%") > -1 ||
+//     senhaVar.indexOf("^") > -1 ||
+//     senhaVar.indexOf("&") > -1 ||
+//     senhaVar.indexOf("(") > -1 ||
+//     senhaVar.indexOf(")") > -1 ||
+//     senhaVar.indexOf(")") > -1 ||
+//     senhaVar.indexOf(")") > -1 ||
+//     senhaVar.indexOf("+") > -1 ||
+//     senhaVar.indexOf("{") > -1 ||
+//     senhaVar.indexOf("}") > -1 ||
+//     senhaVar.indexOf("]") > -1 ||
+//     senhaVar.indexOf("[") > -1 ||
+//     senhaVar.indexOf("|") > -1 ||
+//     senhaVar.indexOf(";") > -1 ||
+//     senhaVar.indexOf(":") > -1 ||
+//     senhaVar.indexOf("?") > -1 ||
+//     senhaVar.indexOf("'") > -1 ||
+//     senhaVar.indexOf(`"`) > -1 ||
+//     senhaVar.indexOf("<") > -1 ||
+//     senhaVar.indexOf(">") > -1 ||
+//     senhaVar.indexOf(",") > -1 ||
+//     senhaVar.indexOf(".") > -1 ||
+//     senhaVar.indexOf("~") > -1 ||
+//     senhaVar.indexOf("/") > -1 ||
+//     senhaVar.indexOf("-") > -1 ||
+//     senhaVar.indexOf("_") > -1) {
+//     div_especial.innerHTML = ' ';
+// } else {
+//     div_especial.innerHTML = '• Não possui caractere especial';
+// }
+// if ( senhaVar.length > 8 &&
+// (senhaVar.indexOf("0") > 0 ||
+// senhaVar.indexOf("1") > 0 ||
+// senhaVar.indexOf("2") > 0 ||
+// senhaVar.indexOf("3") > 0 ||
+// senhaVar.indexOf("4") > 0 ||
+// senhaVar.indexOf("5") > 0 ||
+// senhaVar.indexOf("6") > 0 ||
+// senhaVar.indexOf("7") > 0 ||
+// senhaVar.indexOf("8") > 0 ||
+// senhaVar.indexOf("9") > 0)&&
+// senhaVar.toLowerCase() != senhaVar &&
+// senhaVar.toUpperCase() != senhaVar &&
+// (senhaVar.indexOf("!") > 0 ||
+//     senhaVar.indexOf("@") > 0 ||
+//     senhaVar.indexOf("#") > 0 ||
+//     senhaVar.indexOf("$") > 0 ||
+//     senhaVar.indexOf("%") > 0 ||
+//     senhaVar.indexOf("^") > 0 ||
+//     senhaVar.indexOf("&") > 0 ||
+//     senhaVar.indexOf("(") > 0 ||
+//     senhaVar.indexOf(")") > 0 ||
+//     senhaVar.indexOf(")") > 0 ||
+//     senhaVar.indexOf(")") > 0 ||
+//     senhaVar.indexOf("+") > 0 ||
+//     senhaVar.indexOf("{") > 0 ||
+//     senhaVar.indexOf("}") > 0 ||
+//     senhaVar.indexOf("]") > 0 ||
+//     senhaVar.indexOf("[") > 0 ||
+//     senhaVar.indexOf("|") > 0 ||
+//     senhaVar.indexOf(";") > 0 ||
+//     senhaVar.indexOf(":") > 0 ||
+//     senhaVar.indexOf("?") > 0 ||
+//     senhaVar.indexOf("'") > 0 ||
+//     senhaVar.indexOf(`"`) > 0 ||
+//     senhaVar.indexOf("<") > 0 ||
+//     senhaVar.indexOf(">") > 0 ||
+//     senhaVar.indexOf(",") > 0 ||
+//     senhaVar.indexOf(".") > 0 ||
+//     senhaVar.indexOf("~") > 0 ||
+//     senhaVar.indexOf("/") > 0 ||
+//     senhaVar.indexOf("-") > 0 ||
+//     senhaVar.indexOf("_") > 0)
+// ){
+// senhaValidacao = true;
+// }
+
+// if (senhaVar == confirmacaoSenhaVar){
+//     div_senhaConfirm.innerHTML = ``;
+//     senhaConfirmValidacao = true;
+// }else{
+//     div_senhaConfirm.innerHTML = `As senhas não coincidem`;
+// }
+
+//     if (nomeVar.length < 1){
+//       cardErro.style.display = "block";
+//       mensagem_erro.innerHTML =
+//         "(Nome inválido)";
+//         finalizarAguardar();
+//       return false;
+//     } if (emailVar.indexOf('@') < 1 || emailVar.indexOf('.') < 1){
+//       cardErro.style.display = "block";
+//       mensagem_erro.innerHTML =
+//         "(Email inválido)";
+//         finalizarAguardar();
+//       return false;
+//     } if (senhaVar.length < 6){
+//       cardErro.style.display = "block";
+//       mensagem_erro.innerHTML =
+//         "(Senha inválido)";
+//         finalizarAguardar();
+//       return false;
+//     } if (confirmacaoSenhaVar != senhaVar){
+//       cardErro.style.display = "block";
+//       mensagem_erro.innerHTML =
+//         "(As senhas não conscidem inválido)";
+//         finalizarAguardar();
+//       return false;
+//     }else {
+//       setInterval(sumirMensagem, 5000);
+//     }
+
+
+//     // Enviando o valor da nova input
+//     fetch("/usuarios/cadastrar", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({
+//         // crie um atributo que recebe o valor recuperado aqui
+//         // Agora vá para o arquivo routes/usuario.js
+//         nomeServer: nomeVar,
+//         emailServer: emailVar,
+//         senhaServer: senhaVar
+//       }),
+//     })
+//       .then(function (resposta) {
+//         console.log("resposta: ", resposta);
+
+//         if (resposta.ok) {
+//           cardErro.style.display = "block";
+
+//           mensagem_erro.innerHTML =
+//             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+//           setTimeout(() => {
+//             window.location = "login.html";
+//           }, "2000");
+
+//           limparFormulario();
+//           finalizarAguardar();
+//         } else {
+//           throw "Houve um erro ao tentar realizar o cadastro!";
+//         }
+//       })
+//       .catch(function (resposta) {
+//         console.log(`#ERRO: ${resposta}`);
+//         finalizarAguardar();
+//       });
+
+//     return false;
+//   }
+
+  function listar() {
+    fetch("/empresas/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((empresas) => {
+          empresas.forEach((empresa) => {
+            listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+}
+</script>

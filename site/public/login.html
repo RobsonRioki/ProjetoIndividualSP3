@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/cssgeral.css" />
+    <link rel="stylesheet" href="./CSS/cssLogin.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./assets/imgs/Japanfeedlogo.png" />
+  </head>
+  <body>
+    <header>
+      <a href="./index.html" class="logobox">
+        <div class="logo"></div>
+      </a>
+      <h3 class="h3Header"><a href="cadastro.html">Cadastro</a></h3>
+    </header>
+    <div class="caixaLogin">
+      <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+          <span id="mensagem_erro"></span>
+        </div>
+      </div>
+      <h1>Entre em sua conta</h1>
+      <h3>Não possui uma conta? <a href="cadastro.html">Cadastre-se</a></h3>
+      <br />
+      <div class="caixaInformacao">
+        <p class="textoLogin">Informe seu email</p>
+        <input
+          type="text"
+          class="inputslogin"
+          placeholder="Email"
+          id="email_input"
+        />
+
+        <p class="textoLogin">Digite sua senha</p>
+        <input
+          type="password"
+          class="inputslogin"
+          placeholder="Senha"
+          id="senha_input"
+        />
+        <br />
+        <button onclick="entrar()" class="botaologin">Logar</button>
+      </div>
+    </div>
+    <footer>
+      <div class="tudo">
+        <a
+          href="https://wa.me/+5511986090189/? text="
+          target="https://wa.me/+5511986090189/? text="
+        >
+          <img class="icone" src="./assets/imgs/whatsapp.png" alt=""
+        /></a>
+        <a href="https://www.sptech.school" target="https://www.sptech.school">
+          <img class="icone" src="./assets/imgs/sptech.png" alt=""
+        /></a>
+        <a
+          href="https://github.com/RobsonRioki"
+          target="https://github.com/RobsonRioki"
+        >
+          <img class="icone" src="./assets/imgs/github.png" alt=""
+        /></a>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<script>
+  function entrar() {
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+
+    if (emailVar == "" || senhaVar == "") {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!");
+
+        if (resposta.ok) {
+          console.log(resposta);  
+
+          resposta.json().then((json) => {
+            console.log(json);
+            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.ID_USUARIO = json.idUsuario;
+
+            setTimeout(function () {
+              window.location = "TelaPrincipal.html";
+            }, 1000); // apenas para exibir o loading
+          });
+        } else {
+          console.log("Houve um erro ao tentar realizar o login!");
+
+          resposta.text().then((texto) => {
+            console.error(texto);
+          });
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+      });
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>
