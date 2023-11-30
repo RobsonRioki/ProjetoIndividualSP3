@@ -27,11 +27,11 @@ AvaliacaoComida3 int,
 AvaliacaoComida4 int,
 AvaliacaoComida5 int,
 AvaliacaoComida6 int,
-fkUsuario int,
+fkUsuario int unique,
 foreign key (fkUsuario) references usuario(idUsuario),
 primary key (idAvaliacao, fkUsuario)
 );
-
+select idAvaliacao from avaliacao where fkUsuario = 6;
 SELECT * FROM usuario;
 SELECT * FROM questionario;
 SELECT * FROM avaliacao;

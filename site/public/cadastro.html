@@ -19,7 +19,7 @@
         <div class="logo">
         </div>
       </a>
-      <h3 class="h3Header"><a href="login.html">Login</a></h3>
+      <h3 class="h3Header" onclick="mudando('login')"><a>Login</a></h3>
     </header>
   <div class="caixaCadastro">
     <h1>Cadastre uma nova conta</h1>
@@ -63,7 +63,14 @@
 
 <script>
 
+  
+function mudando(tela) {
+    window.location.href = `${tela}.html`;
+  }
+
 function cadastrar() {
+
+  // alert('aldnasldas')
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
@@ -167,7 +174,7 @@ if (senhaVar.indexOf("!") > -1 ||
 } else {
     div_especial.innerHTML = '• Não possui caractere especial';
 }
-if ( senhaVar.length > 8 &&
+if ( senhaVar.length >= 8 &&
 (senhaVar.indexOf("0") > 0 ||
 senhaVar.indexOf("1") > 0 ||
 senhaVar.indexOf("2") > 0 ||
@@ -212,6 +219,8 @@ senhaVar.toUpperCase() != senhaVar &&
     senhaVar.indexOf("_") > 0)
 ){
 senhaValidacao = true;
+}else{
+div_senhaConfirm.innerHTML = `A senha deve conter no minimo 1 numero e um caracter especial`
 }
 
 if (senhaVar == confirmacaoSenhaVar){
@@ -221,22 +230,7 @@ if (senhaVar == confirmacaoSenhaVar){
     div_senhaConfirm.innerHTML = `As senhas não coincidem`;
 }
 if (nomeValidacao == true && emailValidacao == true && senhaValidacao == true && senhaConfirmValidacao == true){
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
-      finalizarAguardar();
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
-
+  // alert('asdasdasdpaulo')
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
@@ -274,6 +268,9 @@ if (nomeValidacao == true && emailValidacao == true && senhaValidacao == true &&
       });
 
     return false;
+  }
+  else{
+    // alert('robsonBurro')
   }
 //   function cadastrar() {
 

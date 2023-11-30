@@ -19,7 +19,7 @@
       <a href="./index.html" class="logobox">
         <div class="logo"></div>
       </a>
-      <h3 class="h3Header"><a href="login.html">Login</a></h3>
+      <h3 class="h3Header" onclick="mudando('login')"><a>Login</a></h3>
     </header>
 
     <h1>Pratos típicos</h1>
@@ -216,13 +216,20 @@
   </body>
 </html>
 <script>
+  function mudando(tela) {
+    window.location.href = `${tela}.html`;
+  }
   function redirecionar() {
-    window.location.href =
-      "questionario.html";
+    window.location.href = "questionario.html";
   }
 
   function avaliar() {
     var fkUsuario = sessionStorage.ID_USUARIO;
+
+    var fkAvaliacao = "";
+
+    // alert(fkUsuario);
+    // return;
 
     var avaliacao1 = input_avaliacao1.value;
     var avaliacao2 = input_avaliacao2.value;
@@ -245,10 +252,45 @@
       avaliacao5 >= 0 &&
       avaliacao6 >= 0
     ) {
-      alert("Avaliação enviada");
-
+      // alert("Avaliação enviada");
       // Enviando o valor da nova input
-      fetch(`/avaliacao/cadastrar/${fkUsuario}`, {
+      fetch("/avaliacao/autenticar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          idUsario: fkUsuario,
+        }),
+      })
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
+
+          if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then((json) => {
+              console.log(json);
+              console.log(JSON.stringify(json));
+              fkAvaliacao = json.idAvaliacao;
+              // alert(json.idAvaliacao + "asldjnasldnaosndoasijdopasbndpo");
+            });
+          } else {
+            console.log("Houve um erro ao tentar realizar o login!");
+
+            resposta.text().then((texto) => {
+              console.error(texto);
+              // finalizarAguardar(texto);
+            });
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+      console.log(fkAvaliacao);
+      // alert(fkAvaliacao);
+      // return;
+      fetch(`/avaliacao/cadastrar`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -262,20 +304,16 @@
           avaliacao4Server: avaliacao4,
           avaliacao5Server: avaliacao5,
           avaliacao6Server: avaliacao6,
+          fkUser: fkUsuario,
         }),
       })
         .then(function (resposta) {
           console.log("resposta: ", resposta);
 
           if (resposta.ok) {
-            cardErro.style.display = "block";
+            // cardErro.style.display = "block";
 
-            mensagem_erro.innerHTML =
-              "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-            setTimeout(() => {
-              window.location = "login.html";
-            }, "2000");
+            alert("Avaliação enviada com sucesso...");
           } else {
             throw "Houve um erro ao tentar realizar o cadastro!";
           }
@@ -289,21 +327,21 @@
       alert("Avaliações inválidas. Por favor insira um número entre 0 e 10");
     }
 
-    function listar() {
-      fetch("/empresas/listar", {
-        method: "GET",
-      })
-        .then(function (resposta) {
-          resposta.json().then((empresas) => {
-            empresas.forEach((empresa) => {
-              listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
-            });
-          });
-        })
-        .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-        });
-    }
+    // function listar() {
+    //   fetch("/empresas/listar", {
+    //     method: "GET",
+    //   })
+    //     .then(function (resposta) {
+    //       resposta.json().then((empresas) => {
+    //         empresas.forEach((empresa) => {
+    //           listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+    //         });
+    //       });
+    //     })
+    //     .catch(function (resposta) {
+    //       console.log(`#ERRO: ${resposta}`);
+    //     });
+    // }
 
     function sumirMensagem() {
       cardErro.style.display = "none";

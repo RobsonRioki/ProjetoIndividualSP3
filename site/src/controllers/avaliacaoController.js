@@ -8,7 +8,7 @@ function cadastrar(req, res) {
   var avaliacao4 = req.body.avaliacao4Server;
   var avaliacao5 = req.body.avaliacao5Server;
   var avaliacao6 = req.body.avaliacao6Server;
-  var fkUsuario = req.params.ID_USUARIO;
+  var fkUsuario = req.body.fkUser;
 
   // Faça as validações dos valores
   if (avaliacao1 == undefined) {
@@ -52,6 +52,40 @@ function cadastrar(req, res) {
   }
 }
 
+function autenticar(req, res) {
+  var fkUser = req.body.idUsario;
+
+  avaliacaoModel
+    .autenticar(fkUser)
+    .then(function (Resultadoava) {
+      console.log(`\nResultados encontrados: ${Resultadoava.length}`);
+      console.log(`Resultados: ${JSON.stringify(Resultadoava)}`); // transforma JSON em String
+
+      if (Resultadoava.length == 1) {
+        console.log(Resultadoava);
+
+        if (Resultadoava.length > 0) {
+          res.json({
+            idAvaliacao: Resultadoava[0].idAvaliacao,
+          });
+        }
+      } else if (Resultadoava.length == 0) {
+        res.status(403).send("Email e/ou senha inválido(s)");
+      } else {
+        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+      }
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log(
+        "\nHouve um erro ao realizar o login! Erro: ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
   cadastrar,
+  autenticar,
 };
