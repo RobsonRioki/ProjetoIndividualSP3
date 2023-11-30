@@ -104,12 +104,12 @@
         console.log("ESTOU NO THEN DO entrar()!");
 
         if (resposta.ok) {
-          console.log(resposta);  
+          console.log(resposta);
 
           resposta.json().then((json) => {
             console.log(json);
-            sessionStorage.EMAIL_USUARIO = json.email;
             sessionStorage.ID_USUARIO = json.idUsuario;
+            sessionStorage.email = json.email;
 
             setTimeout(function () {
               window.location = "TelaPrincipal.html";
