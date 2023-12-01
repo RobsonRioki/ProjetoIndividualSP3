@@ -13,8 +13,12 @@
       href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
       rel="stylesheet"
     />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
   </head>
-  <body>
+  <body onload="puxar()">
     <header>
       <a href="./index.html" class="logobox">
         <div class="logo"></div>
@@ -194,6 +198,18 @@
         >
       </h3>
     </div>
+    <section class="dashboards">
+      <canvas id="Quest1"></canvas>
+    </section>
+
+    <section class="dashboards">
+      <canvas id="Quest2"></canvas>
+    </section>
+
+    <section class="dashboards">
+      <canvas id="Quest3"></canvas>
+    </section>
+
     <footer>
       <div class="tudo">
         <a
@@ -216,6 +232,59 @@
   </body>
 </html>
 <script>
+  const valoresQuestao1 = [];
+  const valoresQuestao2 = [];
+  const valoresQuestao3 = [];
+
+  function puxar() {
+    // alert("asdasd");
+
+    fetch("/questionario/dados", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!");
+
+        if (resposta.ok) {
+          console.log(resposta);
+
+          resposta.json().then((json) => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            // alert(json.LamenResp);
+            valoresQuestao1.push(json.LamenResp);
+            valoresQuestao1.push(json.OkonomiyakiResp);
+            valoresQuestao1.push(json.OmuraisuResp);
+            valoresQuestao1.push(json.TakoyakiResp);
+            valoresQuestao1.push(json.KaraagueResp);
+            valoresQuestao1.push(json.SushiResp);
+            valoresQuestao2.push(json.GostoResp);
+            valoresQuestao2.push(json.NuncaExpeResp);
+            valoresQuestao2.push(json.NGostoResp);
+            valoresQuestao3.push(json.ComeriaResp);
+            valoresQuestao3.push(json.ExperimentariaResp);
+            valoresQuestao3.push(json.NãoComeriaResp);
+            // alert(json.idAvaliacao + "asldjnasldnaosndoasijdopasbndpo");
+            carregarGraficos();
+          });
+        } else {
+          console.log("Houve um erro ao tentar realizar o login!");
+
+          resposta.text().then((texto) => {
+            console.error(texto);
+            // finalizarAguardar(texto);
+          });
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+      });
+    // console.log(fkAvaliacao);
+  }
+
   function mudando(tela) {
     window.location.href = `${tela}.html`;
   }
@@ -350,5 +419,124 @@
     function sumirMensagem() {
       cardErro.style.display = "none";
     }
+  }
+
+  function carregarGraficos() {
+    // alert("asdasdasdaleo");
+    var Grafico01 = document.getElementById("Quest1").getContext("2d");
+    Grafico01.canvas.width = 500;
+    Grafico01.canvas.height = 150;
+    var graf1 = new Chart(Grafico01, {
+      type: "bar",
+      data: {
+        labels: [
+          "Lámen",
+          "Okonomiyaki",
+          "Omuraisu",
+          "Takoyaki",
+          "Karaague",
+          "Sushi",
+        ],
+        datasets: [
+          {
+            label: "Dos pratos apresentados qual deles mais te interessa?",
+            type: "bar",
+            data: valoresQuestao1,
+            backgroundColor: "RGB(255, 145, 77)",
+          },
+        ],
+      },
+      options: {
+        scales: {
+          xAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      },
+    });
+
+    var Grafico02 = document.getElementById("Quest2").getContext("2d");
+    Grafico02.canvas.width = 500;
+    Grafico02.canvas.height = 150;
+    var graf2 = new Chart(Grafico02, {
+      type: "bar",
+      data: {
+        labels: ["Gosto", "Nunca experimentei", "Não gosto"],
+        datasets: [
+          {
+            label: "Você gosta da culinária japonesa?",
+            type: "bar",
+            data: valoresQuestao2,
+            backgroundColor: "RGB(255, 145, 77)",
+          },
+        ],
+      },
+
+      options: {
+        scales: {
+          xAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      },
+    });
+
+    var Grafico03 = document.getElementById("Quest3").getContext("2d");
+    Grafico03.canvas.width = 500;
+    Grafico03.canvas.height = 150;
+    var graf3 = new Chart(Grafico03, {
+      type: "bar",
+      data: {
+        labels: ["Comeria", "Experimentaria", "Não comeria"],
+        datasets: [
+          {
+            label: "Você comeria comidas cruas?",
+            type: "bar",
+            data: valoresQuestao3,
+            backgroundColor: "RGB(255, 145, 77)",
+          },
+        ],
+      },
+      options: {
+        scales: {
+          xAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      },
+    });
   }
 </script>

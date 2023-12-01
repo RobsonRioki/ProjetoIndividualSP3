@@ -8,5 +8,8 @@ router.post("/resgistrar", function (req, res) {
   questionarioController.cadastrar(req, res);
 });
 
+router.post("/dados", function (req, res) {
+  questionarioController.dados(req, res);
+});
 
 module.exports = router;

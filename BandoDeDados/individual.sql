@@ -34,7 +34,14 @@ primary key (idAvaliacao, fkUsuario)
 select idAvaliacao from avaliacao where fkUsuario = 6;
 SELECT * FROM usuario;
 SELECT * FROM questionario;
+describe questionario;
+
+
 SELECT * FROM avaliacao;
+
+select (select COUNT(resposta1) from questionario where resposta1 = 'Lamen') as resultLamen, 
+		(select COUNT(resposta1) from questionario where resposta1= 'Okonomiyaki')as resultOkonomiyakias 
+	from questionario group by resposta1;
 
 
 
