@@ -39,9 +39,26 @@ describe questionario;
 
 SELECT * FROM avaliacao;
 
-select (select COUNT(resposta1) from questionario where resposta1 = 'Lamen') as resultLamen, 
-		(select COUNT(resposta1) from questionario where resposta1= 'Okonomiyaki')as resultOkonomiyakias 
-	from questionario group by resposta1;
+select (select COUNT(resposta1) from questionario where resposta1 = 'Lamen') as Lamen, 
+		(select COUNT(resposta1) from questionario where resposta1= 'Okonomiyaki')as Okonomiyaki,
+        (select COUNT(resposta1) from questionario where resposta1= 'Omuraisu')as Omuraisu,
+        (select COUNT(resposta1) from questionario where resposta1= 'Takoyaki')as Takoyaki,
+        (select COUNT(resposta1) from questionario where resposta1= 'Karaague')as Karaague,
+        (select COUNT(resposta1) from questionario where resposta1= 'Sushi')as Sushi
+	from questionario group by resposta1 limit 1;
+    
+select (select COUNT(resposta2) from questionario where resposta2 = 'Gosto') as Gosto, 
+		(select COUNT(resposta2) from questionario where resposta2= 'Nunca experimentei')as 'Nunca experimentei',
+        (select COUNT(resposta2) from questionario where resposta2= 'NãoGosto')as NãoGosto
+	from questionario group by resposta1 limit 1;
+    
+    select (select COUNT(resposta3) from questionario where resposta3 = 'Comeria') as Comeria, 
+		(select COUNT(resposta3) from questionario where resposta3= 'Experimentaria')as Experimentaria,
+        (select COUNT(resposta3) from questionario where resposta3= 'NãoComeria')as NãoComeria
+	from questionario group by resposta1 limit 1;
+    
+    
+    
 
 
 
