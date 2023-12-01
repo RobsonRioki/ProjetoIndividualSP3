@@ -138,19 +138,44 @@
 </html>
 <script>
     function registrar() {
-    var Resposta1 = document.querySelector('input[name="p1"]:checked').value;
-    var Resposta2 = document.querySelector('input[name="p2"]:checked').value;
-    var Resposta3 = document.querySelector('input[name="p3"]:checked').value;
-    
-    
-    alert(Resposta1);
-    alert(Resposta2);
-    alert(Resposta3);
+    var resposta1 = document.querySelector('input[name="p1"]:checked').value;
+    var resposta2 = document.querySelector('input[name="p2"]:checked').value;
+    var resposta3 = document.querySelector('input[name="p3"]:checked').value;
+    var fkUsuario = sessionStorage.ID_USUARIO
+    // alert(Resposta1);
+    // alert(Resposta2);
+    // alert(Resposta3);
 
+      fetch(`/questionario/resgistrar`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          resposta1Server: resposta1,
+          resposta2Server: resposta2,
+          resposta3Server: resposta3,
+          fkUsuarioServer: fkUsuario,
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
 
+          if (resposta.ok) {
+            // cardErro.style.display = "block";
 
+            alert("Questionário enviado com sucesso...");
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
 
+      return false;
+    }
 
-
-  }
 </script>
