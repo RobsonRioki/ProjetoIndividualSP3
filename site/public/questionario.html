@@ -19,7 +19,7 @@
       <a href="./index.html" class="logobox">
         <div class="logo"></div>
       </a>
-      <h3 class="h3Header"><a href="login.html">Login</a></h3>
+      <h3 class="h3Header"><a href="index.html">Sair</a></h3>
     </header>
     <h1>Questionário</h1>
     <div class="divPergunta">
@@ -167,6 +167,7 @@
             // cardErro.style.display = "block";
 
             alert("Questionário enviado com sucesso...");
+            window.location.href=`TelaPrincipal.html`;
           } else {
             throw "Houve um erro ao tentar realizar o cadastro!";
           }
